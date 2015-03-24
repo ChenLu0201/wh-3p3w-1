@@ -1,0 +1,274 @@
+
+@import "compass/reset";
+@import "compass/css3";
+
+$body-bg-color: #566472;
+$main-bg-color: #F4F3F1;
+$header-circle-red: #E5674D;
+$header-circle-yellow: #F8BF2D;
+$header-circle-green: #57BDA6;
+$hiw-orange:#EAA861;
+$hiw-purple:#AD9ED1;
+$hiw-blue:#519AC9;
+$font-title: #FFFFFF;
+$font-black: #373D4A;
+$botton-green: #6CDCAC;
+$light-gray:#D9DADA;
+$extra-light-gray:#E6E6E6;
+$light-medium-gray:#6F7586;
+$medium-gray: #455069;
+$dark-gray: #383E4B;
+
+$font-weight-light:300;
+$font-weight-light-medium:400;
+$font-weight-medium:500;
+$font-weight-light-heavy:600;
+$font-weight-heavy:700;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin background-with-image($imageUrl) {
+    position:relative;
+  	background-image: url($imageUrl);
+	background-repeat: no-repeat;	
+	background-position: center;
+	z-index:0;
+	&:after {
+	    content:"";
+	    position:absolute;
+	    top:0;
+	    left:0;
+	    width: 100%;
+	    height:100%;
+		background-color:rgba(33%, 33%, 33%, 0.7);
+		z-index:-1;
+	}
+}
+
+.font-title {
+	color: $medium-gray;
+    font-size: 2em; 
+}
+
+body {
+    background-color: $body-bg-color;
+    
+    font-family:"Roboto", sans-serif;
+	.main {	
+	    font-size: 62.5%;
+		width: 80%;
+		margin: 0 auto;
+		background-color: $main-bg-color;
+		padding-bottom: 5em;
+		@include border-radius(0.6em);
+		header {
+			width:100%;
+			margin:0px auto;
+		    .circle {
+			    width:1.6em;
+			    height:1.6em;
+				@include border-radius(50%);
+				background-color:$header-circle-yellow;
+				float:left;
+				margin:1.5em 0 1.5em 1em;
+				&:first-child
+				{
+					margin-left:1.5em;
+					background-color:$header-circle-red;
+				}
+				&:last-child
+				{
+					background-color:$header-circle-green;
+				}
+			}
+			&:after {
+				clear:both;
+				content:"";
+				display:block;
+			}
+		}
+        
+        .header-search {
+        	@include background-with-image("../images/IMG_0632.JPG");
+        	color: $light-gray;
+        	nav {
+        		padding-top:1.5em;
+	        	.navigators {
+	        		float: right;
+	        		margin-right: 1em;
+	        		padding: 0.5em;
+	        		font-weight: $font-weight-light;
+	        		font-size: 1.4em;
+	        		&:first-child {
+	        		   margin-right: 3em;
+	        		   border:1px solid $light-gray;
+	        		   @include border-radius(0.2em);
+	        		}
+	        	}
+	        	&:after {
+					clear:both;
+					content:"";
+					display:block;
+				}
+        	}
+        	.search-header-title {
+        		color: $font-title;
+        		font-size: 3.2em;
+        		width: 70%;
+        		text-align:center;
+        		margin: 5em auto 0 auto;
+        	}
+        	.search-header-subtitle {
+        		color: $light-gray;
+        		font-size: 1.6em;
+        		width: 70%;
+        		text-align:center;
+        		margin: 0.6em auto 1em auto;
+        	}
+        	.search-box {
+        		width:40%;
+        		height:5em;
+        		aligen:center;
+        		margin: 0 auto 0em auto;
+        		padding-bottom: 15em;
+        		.search-header-input {
+        			width: 80%;
+        			height:100%;
+        			box-sizing: border-box; 
+        			border:none;
+        			font-size: 1.8em;
+        			background-color: $light-gray;
+        			border-radius: 0.2em 0 0 0.2em;
+           		}
+        		.search-header-button {
+        			background-color: $botton-green;
+        			color: $font-title;
+        			width:19%;
+        			position:relative;
+        			left:-0.2em;
+        			height:100%;
+        			box-sizing: border-box; 
+        			border:none;
+        			padding:0;
+        			font-size: 1.8em;
+        			border-radius: 0em 0.2em 0.2em 0em;
+        		}
+        	}
+        }
+
+        .statics {
+        	width:60%;
+        	margin: 0 auto;
+        	border: none;
+        	ul {
+        		width:100%;
+        		border: none;
+        		border: 2px solid $light-gray;
+        		background-color: $main-bg-color;
+        		border-radius: 0.4em;
+        	 	position:relative;
+        	 	top: -5em;
+        		li {
+        			text-align:center;
+        			display: inline-block;
+        			box-sizing: border-box;
+            		width: 24.7%;
+            		border-right: 1px solid $light-gray;
+            		&:last-child {
+            			border: none;
+            		}
+            		.number {
+            			color: $font-black;
+            			margin-top: 1.8em;
+            			font-size: 2em;
+            			font-weight: $font-weight-light-heavy;
+            		}
+            		.category {
+            			color: $light-medium-gray;
+            			margin-top: 2.5em;
+            			font-size: 1.2em;
+            			font-weight: $font-weight-medium;
+            			margin: 1em 0 2em 0;
+            		}
+
+        		}
+        	}
+        }
+
+    	.how-it-works {
+    		@extend .font-title;
+    		margin: 0 auto;
+    		text-align:center;
+    		.title {
+	    		&:after {
+	    			content:"";
+	    			display: block;
+	    			width: 2em;
+	    			border-top: 0.2em solid $extra-light-gray;
+	    			margin: 0.3em auto;
+	    		}
+    		}
+    		.contents {
+    			color: $light-gray;
+    			width:80%;
+    			margin:3em auto;
+    			&:before {
+    				position:relative;
+    				top:0px;
+    				content:"";
+    				display:block;
+    				width: 65%;
+    				border-top: 0.15em solid $light-gray;
+    				margin:0 auto;
+    				top: 1.1em;
+    			}
+    			.content {
+    			    display:inline-block;
+    				width:32%;
+    				box-sizing: border-box;
+    				.index {
+    					position:relative;
+    					width:2em;
+    					height:2em;
+    					background-color: $main-bg-color;
+    					p {
+    						margin-top: 0.5em;
+    					}
+    					margin:0 auto;
+    					text-align:center;
+    					border:0.2em solid $light-gray;
+    					@include border-radius(50%);
+    				}
+    				.icon-board {
+    					color: $hiw-orange;
+    					font-size: 2.5em;
+    					margin: 1em auto;
+    				}
+    				.icon-pencil {
+    					color: $hiw-purple;
+    					font-size: 2.5em;
+    					margin: 1em auto;
+    				}
+    				.icon-group {
+    					color: $hiw-blue;
+    					font-size: 2.5em;
+    					margin: 1em auto;
+    				}
+    				.category {
+    					color: $dark-gray;
+    					font-size: 1em;
+    				}
+    				.details {
+    				    font-size: 0.8em;
+    					margin: 1em;
+    				}
+    			}
+    		}
+    	}
+	}
+}
